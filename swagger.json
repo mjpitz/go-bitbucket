@@ -1013,7 +1013,6 @@
           "properties": {
             "external_id": {
               "type": "string",
-              "required": true,
               "description": "ID of the annotation provided by the annotation creator. It can be used to identify the annotation as an alternative to it's generated uuid. It is not used by Bitbucket, but only by the annotation creator for updating or deleting this specific annotation. Needs to be unique."
             },
             "uuid": {
@@ -1040,7 +1039,6 @@
             },
             "summary": {
               "type": "string",
-              "required": true,
               "description": "The message to display to users."
             },
             "details": {
@@ -1135,17 +1133,14 @@
             },
             "title": {
               "type": "string",
-              "required": true,
               "description": "The title of the report."
             },
             "details": {
               "type": "string",
-              "required": true,
               "description": "A string to describe the purpose of the report."
             },
             "external_id": {
               "type": "string",
-              "required": true,
               "description": "ID of the report provided by the report creator. It can be used to identify the report as an alternative to it's generated uuid. It is not used by Bitbucket, but only by the report creator for updating or deleting this specific report. Needs to be unique."
             },
             "reporter": {
