@@ -192,7 +192,7 @@ func (a *Client) GetAddonLinkersLinkerKeyValues(params *GetAddonLinkersLinkerKey
 	_, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "GetAddonLinkersLinkerKeyValues",
 		Method:             "GET",
-		PathPattern:        "/addon/linkers/{linker_key}/values/",
+		PathPattern:        "/addon/linkers/{linker_key}/values",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},

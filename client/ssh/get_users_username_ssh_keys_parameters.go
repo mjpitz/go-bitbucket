@@ -60,13 +60,8 @@ for the get users username SSH keys operation typically these are written to a h
 */
 type GetUsersUsernameSSHKeysParams struct {
 
-	/*KeyID
-	  The SSH key's UUID value.
-
-	*/
-	KeyID string
 	/*Username
-	  The account's username or UUID.
+	  The account's UUID, account_id, or username. Note that username has been deprecated due to [privacy changes](https://developer.atlassian.com/cloud/bitbucket/bitbucket-api-changes-gdpr/#removal-of-usernames-from-user-referencing-apis).
 
 	*/
 	Username string
@@ -109,17 +104,6 @@ func (o *GetUsersUsernameSSHKeysParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithKeyID adds the keyID to the get users username SSH keys params
-func (o *GetUsersUsernameSSHKeysParams) WithKeyID(keyID string) *GetUsersUsernameSSHKeysParams {
-	o.SetKeyID(keyID)
-	return o
-}
-
-// SetKeyID adds the keyId to the get users username SSH keys params
-func (o *GetUsersUsernameSSHKeysParams) SetKeyID(keyID string) {
-	o.KeyID = keyID
-}
-
 // WithUsername adds the username to the get users username SSH keys params
 func (o *GetUsersUsernameSSHKeysParams) WithUsername(username string) *GetUsersUsernameSSHKeysParams {
 	o.SetUsername(username)
@@ -138,11 +122,6 @@ func (o *GetUsersUsernameSSHKeysParams) WriteToRequest(r runtime.ClientRequest, 
 		return err
 	}
 	var res []error
-
-	// path param key_id
-	if err := r.SetPathParam("key_id", o.KeyID); err != nil {
-		return err
-	}
 
 	// path param username
 	if err := r.SetPathParam("username", o.Username); err != nil {

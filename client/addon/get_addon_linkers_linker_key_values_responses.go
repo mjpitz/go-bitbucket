@@ -55,7 +55,7 @@ func (o *GetAddonLinkersLinkerKeyValuesDefault) Code() int {
 }
 
 func (o *GetAddonLinkersLinkerKeyValuesDefault) Error() string {
-	return fmt.Sprintf("[GET /addon/linkers/{linker_key}/values/][%d] GetAddonLinkersLinkerKeyValues default  %+v", o._statusCode, o.Payload)
+	return fmt.Sprintf("[GET /addon/linkers/{linker_key}/values][%d] GetAddonLinkersLinkerKeyValues default  %+v", o._statusCode, o.Payload)
 }
 
 func (o *GetAddonLinkersLinkerKeyValuesDefault) GetPayload() *models.Error {

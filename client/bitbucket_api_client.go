@@ -18,6 +18,7 @@ import (
 	"github.com/mjpitz/go-bitbucket/client/deployments"
 	"github.com/mjpitz/go-bitbucket/client/downloads"
 	"github.com/mjpitz/go-bitbucket/client/issue_tracker"
+	"github.com/mjpitz/go-bitbucket/client/operations"
 	"github.com/mjpitz/go-bitbucket/client/pipelines"
 	"github.com/mjpitz/go-bitbucket/client/projects"
 	"github.com/mjpitz/go-bitbucket/client/properties"

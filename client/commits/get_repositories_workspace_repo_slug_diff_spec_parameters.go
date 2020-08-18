@@ -66,11 +66,6 @@ type GetRepositoriesWorkspaceRepoSlugDiffSpecParams struct {
 
 	*/
 	Binary *bool
-	/*Context
-	  Generate diffs with <n> lines of context instead of the usual three.
-
-	*/
-	Context *int64
 	/*IgnoreWhitespace
 	  Generate diffs that ignore whitespace.
 
@@ -165,17 +160,6 @@ func (o *GetRepositoriesWorkspaceRepoSlugDiffSpecParams) WithBinary(binary *bool
 // SetBinary adds the binary to the get repositories workspace repo slug diff spec params
 func (o *GetRepositoriesWorkspaceRepoSlugDiffSpecParams) SetBinary(binary *bool) {
 	o.Binary = binary
-}
-
-// WithContext adds the context to the get repositories workspace repo slug diff spec params
-func (o *GetRepositoriesWorkspaceRepoSlugDiffSpecParams) WithContext(context *int64) *GetRepositoriesWorkspaceRepoSlugDiffSpecParams {
-	o.SetContext(context)
-	return o
-}
-
-// SetContext adds the context to the get repositories workspace repo slug diff spec params
-func (o *GetRepositoriesWorkspaceRepoSlugDiffSpecParams) SetContext(context *int64) {
-	o.Context = context
 }
 
 // WithIgnoreWhitespace adds the ignoreWhitespace to the get repositories workspace repo slug diff spec params
@@ -273,22 +257,6 @@ func (o *GetRepositoriesWorkspaceRepoSlugDiffSpecParams) WriteToRequest(r runtim
 		qBinary := swag.FormatBool(qrBinary)
 		if qBinary != "" {
 			if err := r.SetQueryParam("binary", qBinary); err != nil {
-				return err
-			}
-		}
-
-	}
-
-	if o.Context != nil {
-
-		// query param context
-		var qrContext int64
-		if o.Context != nil {
-			qrContext = *o.Context
-		}
-		qContext := swag.FormatInt64(qrContext)
-		if qContext != "" {
-			if err := r.SetQueryParam("context", qContext); err != nil {
 				return err
 			}
 		}

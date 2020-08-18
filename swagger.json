@@ -22712,13 +22712,6 @@
         "parameters": [
           {
             "required": false,
-            "type": "integer",
-            "description": "Generate diffs with <n> lines of context instead of the usual three.",
-            "in": "query",
-            "name": "context"
-          },
-          {
-            "required": false,
             "type": "string",
             "description": "Limit the diff to a particular file (this parameter\ncan be repeated for multiple paths).",
             "in": "query",

@@ -54,23 +54,23 @@ func NewGetUsersUsernameSSHKeysOK() *GetUsersUsernameSSHKeysOK {
 
 /*GetUsersUsernameSSHKeysOK handles this case with default header values.
 
-The specific SSH key matching the user and UUID
+A list of the SSH keys associated with the account.
 */
 type GetUsersUsernameSSHKeysOK struct {
-	Payload *models.SSHAccountKey
+	Payload *models.PaginatedSSHUserKeys
 }
 
 func (o *GetUsersUsernameSSHKeysOK) Error() string {
-	return fmt.Sprintf("[GET /users/{username}/ssh-keys/][%d] getUsersUsernameSshKeysOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /users/{username}/ssh-keys][%d] getUsersUsernameSshKeysOK  %+v", 200, o.Payload)
 }
 
-func (o *GetUsersUsernameSSHKeysOK) GetPayload() *models.SSHAccountKey {
+func (o *GetUsersUsernameSSHKeysOK) GetPayload() *models.PaginatedSSHUserKeys {
 	return o.Payload
 }
 
 func (o *GetUsersUsernameSSHKeysOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.SSHAccountKey)
+	o.Payload = new(models.PaginatedSSHUserKeys)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -87,13 +87,13 @@ func NewGetUsersUsernameSSHKeysForbidden() *GetUsersUsernameSSHKeysForbidden {
 
 /*GetUsersUsernameSSHKeysForbidden handles this case with default header values.
 
-If the specified user or key is not accessible to the current user
+If the specified user's keys are not accessible to the current user
 */
 type GetUsersUsernameSSHKeysForbidden struct {
 }
 
 func (o *GetUsersUsernameSSHKeysForbidden) Error() string {
-	return fmt.Sprintf("[GET /users/{username}/ssh-keys/][%d] getUsersUsernameSshKeysForbidden ", 403)
+	return fmt.Sprintf("[GET /users/{username}/ssh-keys][%d] getUsersUsernameSshKeysForbidden ", 403)
 }
 
 func (o *GetUsersUsernameSSHKeysForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -108,14 +108,14 @@ func NewGetUsersUsernameSSHKeysNotFound() *GetUsersUsernameSSHKeysNotFound {
 
 /*GetUsersUsernameSSHKeysNotFound handles this case with default header values.
 
-If the specified user or key does not exist
+If the specified user does not exist
 */
 type GetUsersUsernameSSHKeysNotFound struct {
 	Payload *models.Error
 }
 
 func (o *GetUsersUsernameSSHKeysNotFound) Error() string {
-	return fmt.Sprintf("[GET /users/{username}/ssh-keys/][%d] getUsersUsernameSshKeysNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /users/{username}/ssh-keys][%d] getUsersUsernameSshKeysNotFound  %+v", 404, o.Payload)
 }
 
 func (o *GetUsersUsernameSSHKeysNotFound) GetPayload() *models.Error {

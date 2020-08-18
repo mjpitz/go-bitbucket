@@ -79,43 +79,50 @@ func (a *Client) DeleteUsersUsernameSSHKeys(params *DeleteUsersUsernameSSHKeysPa
 }
 
 /*
-  GetUsersUsernameSSHKeys Returns a specific SSH public key belonging to a user.
+  GetUsersUsernameSSHKeys Returns a paginated list of the user's SSH public keys.
 
 Example:
-```
-$ curl https://api.bitbucket.org/2.0/users/markadams-atl/ssh-keys/{fbe4bbab-f6f7-4dde-956b-5c58323c54b3}
 
+```
+$ curl https://api.bitbucket.org/2.0/users/markadams-atl/ssh-keys
 {
-    "comment": "user@myhost",
-    "created_on": "2018-03-14T13:17:05.196003+00:00",
-    "key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKqP3Cr632C2dNhhgKVcon4ldUSAeKiku2yP9O9/bDtY",
-    "label": "",
-    "last_used": "2018-03-20T13:18:05.196003+00:00",
-    "links": {
-        "self": {
-            "href": "https://api.bitbucket.org/2.0/users/markadams-atl/ssh-keys/b15b6026-9c02-4626-b4ad-b905f99f763a"
+    "page": 1,
+    "pagelen": 10,
+    "size": 1,
+    "values": [
+        {
+            "comment": "user@myhost",
+            "created_on": "2018-03-14T13:17:05.196003+00:00",
+            "key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKqP3Cr632C2dNhhgKVcon4ldUSAeKiku2yP9O9/bDtY",
+            "label": "",
+            "last_used": "2018-03-20T13:18:05.196003+00:00",
+            "links": {
+                "self": {
+                    "href": "https://api.bitbucket.org/2.0/users/markadams-atl/ssh-keys/b15b6026-9c02-4626-b4ad-b905f99f763a"
+                }
+            },
+            "owner": {
+                "display_name": "Mark Adams",
+                "links": {
+                    "avatar": {
+                        "href": "https://bitbucket.org/account/markadams-atl/avatar/32/"
+                    },
+                    "html": {
+                        "href": "https://bitbucket.org/markadams-atl/"
+                    },
+                    "self": {
+                        "href": "https://api.bitbucket.org/2.0/users/markadams-atl"
+                    }
+                },
+                "type": "user",
+                "username": "markadams-atl",
+                "nickname": "markadams-atl",
+                "uuid": "{d7dd0e2d-3994-4a50-a9ee-d260b6cefdab}"
+            },
+            "type": "ssh_key",
+            "uuid": "{b15b6026-9c02-4626-b4ad-b905f99f763a}"
         }
-    },
-    "owner": {
-        "display_name": "Mark Adams",
-        "links": {
-            "avatar": {
-                "href": "https://bitbucket.org/account/markadams-atl/avatar/32/"
-            },
-            "html": {
-                "href": "https://bitbucket.org/markadams-atl/"
-            },
-            "self": {
-                "href": "https://api.bitbucket.org/2.0/users/markadams-atl"
-            }
-        },
-        "type": "user",
-        "username": "markadams-atl",
-        "nickname": "markadams-atl",
-        "uuid": "{d7dd0e2d-3994-4a50-a9ee-d260b6cefdab}"
-    },
-    "type": "ssh_key",
-    "uuid": "{b15b6026-9c02-4626-b4ad-b905f99f763a}"
+    ]
 }
 ```
 */
@@ -128,7 +135,7 @@ func (a *Client) GetUsersUsernameSSHKeys(params *GetUsersUsernameSSHKeysParams, 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "GetUsersUsernameSSHKeys",
 		Method:             "GET",
-		PathPattern:        "/users/{username}/ssh-keys/",
+		PathPattern:        "/users/{username}/ssh-keys",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
